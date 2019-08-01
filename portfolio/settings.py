@@ -20,7 +20,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-with open('secret_key.txt') as f:
+SECRET_KEY_FILE = 'portfolio\\secret_key.txt'
+SECRET_KEY_FILE_PATH = os.path.join(BASE_DIR, SECRET_KEY_FILE)
+with open(SECRET_KEY_FILE_PATH) as f:
     SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -38,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'projects',
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +59,7 @@ ROOT_URLCONF = 'portfolio.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

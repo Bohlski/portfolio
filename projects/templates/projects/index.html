@@ -1,0 +1,27 @@
+{% extends "projects/base.html" %}
+{% load static %}
+
+{% block page_content %}
+<link rel="stylesheet" type="text/css" href="{% static 'projects/style.css' %}">
+
+<h1 class="proj-title">Projects</h1>
+<div class="row">
+
+{% if projects %}
+	{% for project in projects %}
+		<div class="col-md-4">
+			<div class="card mb-2">
+				<a href="{% url 'projects:detail' project.slug %}"><img class="card-img-top" src="{% static '/projects/'|add:project.image %}"></a>
+				<div class="card-body">
+					<h5 class="card-title"><a href="{% url 'projects:detail' project.slug %}">{{ project.title }}</a></h5>
+					<p class="card-text">{{ project.desc }}</p>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+{% else %}
+	<p>Something went wrong!</p>
+{% endif %}
+</div>
+
+{% endblock %}
