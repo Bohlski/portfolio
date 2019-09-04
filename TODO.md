@@ -1,6 +1,6 @@
 # Projects
-- Make detail view show more about a single project
-- Figure out why the path in the FilePathField breaks admin page and what to write instead
+- Let admin easily add new projects
+- Replace FilePathField with ImageField in the models to enable uploads of pictures in the future (Fixed the bug with FilePathField breaking admin edit page by hardcoding path)
 
 
 # Blog

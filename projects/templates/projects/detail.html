@@ -1,4 +1,19 @@
-{% extends "projects/base.html" %}
+{% extends "base.html" %}
+{% load static %}
+
 {% block page_content %}
-<h1>This is details!</h1>
+<link rel="stylesheet" type="text/css" href="{% static 'projects/style.css' %}">
+<h1 class="proj-title">{{ project.title }}</h1>
+<div class="row">
+	<div class="col-md-8">
+		<img src="{% static project.image %}" alt="project image" width="100%">
+	</div>
+	<div class="col-md-4">
+		<h5>About the project:</h5>
+		<p>{{ project.desc }}</p>
+		<br>
+		<h5>Technology used:</h5>
+		<p>{{ project.tech }}</p>
+	</div>
+</div>
 {% endblock %}

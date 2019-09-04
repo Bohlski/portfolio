@@ -1,1 +1,9 @@
-<h1>A blog should be here!</h1>
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_content %}
+<h1>Blog of Bohl</h1>
+{% for post in posts %}
+	<h2>{{ post.title }}</h2>
+{% endfor %}
+{% endblock %}
