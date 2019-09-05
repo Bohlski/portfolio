@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import generic
-from .models import Post
+from .models import Post, Category
 
 # Create your views here.
 class IndexView(generic.ListView):
@@ -19,3 +19,17 @@ class CategoryView(generic.ListView):
 	template_name = 'blog/category.html'
 	model = Post
 	context_object_name = 'posts'
+
+	def get_queryset(self):
+		print('TESTING')
+		self.category = get_object_or_404(Category, name=self.kwargs['category'])
+		print(self.category)
+		return Post.objects.filter(categories__name__contains=self.category).order_by('-create_date')
+	
+	# Need to add the categories to the context object
+	#def get_context_data(self, **kwargs):
+		# Call the base implementation first to get a context
+	#	context = super().get_context_data(**kwargs)
+		# Add in a QuerySet of all the categories
+	#	context['categories'] = Category.objects.all()
+	#	return context

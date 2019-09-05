@@ -3,6 +3,14 @@ h1.proj-title {
 	margin-bottom: 1rem;
 }
 
+h1.blog-title {
+	margin-bottom: 0.8rem;
+}
+
 li a {
 	color: green;
+}
+
+hr {
+	margin: 0 0 1rem;
 }

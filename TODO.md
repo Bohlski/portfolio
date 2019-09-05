@@ -4,8 +4,7 @@
 
 
 # Blog
-- Pass slug made from title through the url (and see if its possible without adding slug to model)
-- Finish index page with all the blog posts
+- Fix category being mistaken for a slug, making filtering by category not work
 - Finish detail page
-- Finish ordering by category
+- (See if its possible to pass slug through title without having slug in model)
 - (Add comments to model and view)

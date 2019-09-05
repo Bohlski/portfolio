@@ -1,1 +1,22 @@
-<h1>I'm filtered by a category!</h1>
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_content %}
+<div class="col-md-8 offset-md-2">
+	<h1 class="proj-title blog-title">{{ category | title }}</h1>
+	<hr>
+	{% for post in posts %}
+		<h2><a href="{% url 'blog:blog_post' post.slug %}">{{ post.title }}</a></h2>
+		<small>
+			{{ post.create_date.date }} |&nbsp;
+			Categories:&nbsp;
+			{% for category in post.categories.all %}
+				<a href="{% url 'blog:blog_category' category.name %}">
+					{{ category.name }}
+				</a>&nbsp;
+			{% endfor %}
+		</small>
+		<p>{{ post.body | slice:":400" }}{% if post.body|length > 400 %}...{% endif %}</p>
+	{% endfor %}
+</div>
+{% endblock %}

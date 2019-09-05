@@ -1,1 +1,6 @@
-<h1>This here describes (insert post)</h1>
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_content %}
+<h1>{{ post.title }}</h1>
+{% endblock %}
