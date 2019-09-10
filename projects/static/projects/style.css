@@ -1,10 +1,15 @@
-h1.proj-title {
-	margin-top: 1rem;
+h1.title {
+	margin-top: 0.8rem;
 	margin-bottom: 1rem;
 }
 
-h1.blog-title {
-	margin-bottom: 0.8rem;
+h1.blog-detail-title {
+	margin-top: 0.8rem;
+}
+
+.cat-divider {
+	display: inline;
+	color: lightgrey;
 }
 
 li a {

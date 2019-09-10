@@ -4,7 +4,5 @@
 
 
 # Blog
-- Fix category being mistaken for a slug, making filtering by category not work
-- Finish detail page
 - (See if its possible to pass slug through title without having slug in model)
 - (Add comments to model and view)

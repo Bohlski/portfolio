@@ -13,6 +13,7 @@ class IndexView(generic.ListView):
 class PostView(generic.DetailView):
 	template_name = 'blog/detail.html'
 	model = Post
+	context_object_name = 'post'
 
 
 class CategoryView(generic.ListView):
@@ -20,16 +21,15 @@ class CategoryView(generic.ListView):
 	model = Post
 	context_object_name = 'posts'
 
+	# Filter the posts by the category passed through the url
 	def get_queryset(self):
-		print('TESTING')
 		self.category = get_object_or_404(Category, name=self.kwargs['category'])
-		print(self.category)
 		return Post.objects.filter(categories__name__contains=self.category).order_by('-create_date')
 	
-	# Need to add the categories to the context object
-	#def get_context_data(self, **kwargs):
+	# Add the category url argument to the context object
+	def get_context_data(self, **kwargs):
 		# Call the base implementation first to get a context
-	#	context = super().get_context_data(**kwargs)
-		# Add in a QuerySet of all the categories
-	#	context['categories'] = Category.objects.all()
-	#	return context
+		context = super().get_context_data(**kwargs)
+		# Add in the category
+		context['category'] = self.kwargs['category']
+		return context
